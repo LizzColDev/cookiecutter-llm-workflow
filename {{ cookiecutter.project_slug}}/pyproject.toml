@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = ""
+authors = ["{{cookiecutter.name_author}} <{{ cookiecutter.email_author}}>"]
+readme = "README.md"
+packages = [
+  { include = "api" },
+  { include = "src" },
+  { include = "tests" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.100.0"
+uvicorn = "^0.22.0"
+python-magic = "^0.4.27"
+lynx = {version = "^0.0.16", source = "codeartifact-llm"}
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+flake8 = "^6.0.0"
+flake8-bandit = "^4.1.1"
+flake8-black = "^0.3.6"
+flake8-bugbear = "^23.7.10"
+flake8-import-order = "^0.18.2"
+safety = "^2.3.5"
+pytest = "^7.4.0"
+aws-cdk-lib = "^2.88.0"
+coverage = {extras = ["toml"], version = "^7.2.7"}
+pytest-cov = "^4.1.0"
+
+
+[[tool.poetry.source]]
+name = "codeartifact-llm"
+url = "https://llm-112927635355.d.codeartifact.us-east-2.amazonaws.com/pypi/llm/simple/"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.paths]
+source = ["src", "api", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["api", "src"]
+
+[tool.coverage.report]
+show_missing = true
