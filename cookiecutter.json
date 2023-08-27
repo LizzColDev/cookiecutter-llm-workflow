@@ -1,0 +1,7 @@
+{
+  "project_title": "llm workflow",
+  "project_slug": "{{ cookiecutter.project_title.lower().replace(' ', '-').replace('_', '-') }}",
+  "name_author": "Your name",
+  "email_author": "Your email",
+  "python_version": "3.11.4"
+}
